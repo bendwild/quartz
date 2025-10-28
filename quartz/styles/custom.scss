@@ -16,3 +16,29 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+@use "./base.scss";
+
+/* Ensure page can show the background */
+html, body { min-height: 100%; }
+
+/* Socratica-like grid paper (light + dark) */
+body {
+  /* paper tint */
+  background-color: #fdf7e9;
+  /* vertical + horizontal hairlines */
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 36px 36px; /* grid size */
+  background-attachment: fixed;
+}
+
+/* Dark mode variant */
+body.dark {
+  background-color: #191a1c;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
