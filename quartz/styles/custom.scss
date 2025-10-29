@@ -1,19 +1,33 @@
 @use "./base.scss";
 
 /* --------------------------------------------------------------------------
-   Handwritten Notebook Theme — Pastel Green Edition 🌿
+   Handwritten Notebook Theme — Pastel Green Edition (build-safe)
    -------------------------------------------------------------------------- */
 
-/* Import Kalam and Permanent Marker from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Permanent+Marker&display=swap");
+/* Load Kalam + Permanent Marker fonts via @font-face  */
+@font-face {
+  font-family: "Kalam";
+  src: url("https://fonts.gstatic.com/s/kalam/v17/YA9dr0Wd4kDdMtD6WnZB.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Kalam";
+  src: url("https://fonts.gstatic.com/s/kalam/v17/YA9Yr0Wd4kDdMtD6WnJmUg.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Permanent Marker";
+  src: url("https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004La2M.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
 
 /* --------------------------------------------------------------------------
    BASE STYLES
    -------------------------------------------------------------------------- */
-body {
-  background-image: url("/static/bg.png") !important;
-  margin: 0;
-}
+
 html, body {
   min-height: 100%;
   margin: 0;
@@ -39,10 +53,7 @@ body.dark {
   color: #e8fbe4;
 }
 
-/* --------------------------------------------------------------------------
-   TYPOGRAPHY
-   -------------------------------------------------------------------------- */
-
+/* Headings */
 h1, h2, h3, h4, h5 {
   font-family: "Permanent Marker", cursive;
   color: #274d32;
@@ -51,12 +62,9 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 0.4em;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05);
 }
-
 body.dark h1, body.dark h2, body.dark h3 {
   color: #b8e8b2;
 }
-
-/* Torn underline under main headings */
 h1::after {
   content: "";
   display: block;
@@ -70,25 +78,18 @@ h1::after {
   margin-top: 6px;
 }
 
-/* --------------------------------------------------------------------------
-   LINKS
-   -------------------------------------------------------------------------- */
-
+/* Links */
 a {
   color: #3b7a4a;
   text-decoration: underline wavy 1.5px #3b7a4a;
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
-
 a:hover {
   color: #89c77f;
   text-decoration-color: #89c77f;
 }
 
-/* --------------------------------------------------------------------------
-   NOTEBOOK-STYLE CARDS
-   -------------------------------------------------------------------------- */
-
+/* Cards */
 .card {
   background: #fdfef9;
   border: 2px solid #3b7a4a;
@@ -97,16 +98,12 @@ a:hover {
   padding: 1.2rem;
   transition: all 0.25s ease;
 }
-
 .card:hover {
   transform: translate(-3px, -3px);
   box-shadow: 6px 6px 0 #7acb7a;
 }
 
-/* --------------------------------------------------------------------------
-   TAGS
-   -------------------------------------------------------------------------- */
-
+/* Tags */
 .tag {
   display: inline-block;
   padding: 0.25rem 0.6rem;
@@ -117,16 +114,12 @@ a:hover {
   margin-right: 0.3rem;
   font-family: "Kalam", cursive;
 }
-
 body.dark .tag {
   background: #324734;
   color: #b8e8b2;
 }
 
-/* --------------------------------------------------------------------------
-   NAVBAR
-   -------------------------------------------------------------------------- */
-
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -140,12 +133,10 @@ body.dark .tag {
   z-index: 10;
   backdrop-filter: blur(8px);
 }
-
 body.dark .navbar {
   background-color: rgba(27, 29, 27, 0.9);
   border-bottom: 3px dashed rgba(137, 199, 127, 0.5);
 }
-
 .navbar a {
   font-family: "Kalam", cursive;
   color: #3b7a4a;
@@ -154,17 +145,13 @@ body.dark .navbar {
   margin: 0 1rem;
   transition: all 0.2s ease;
 }
-
 .navbar a:hover {
   color: #89c77f;
   text-decoration: underline wavy 1.5px #89c77f;
   transform: rotate(-1deg);
 }
 
-/* --------------------------------------------------------------------------
-   FOOTER
-   -------------------------------------------------------------------------- */
-
+/* Footer */
 .footer {
   text-align: center;
   padding: 1.5rem;
@@ -175,25 +162,15 @@ body.dark .navbar {
   font-family: "Kalam", cursive;
   margin-top: 3rem;
 }
-
-.footer::before {
-  content: "✏️ ";
-}
-
-.footer::after {
-  content: " 🌿";
-}
-
+.footer::before { content: "✏️ "; }
+.footer::after { content: " 🌿"; }
 body.dark .footer {
   background-color: rgba(27, 29, 27, 0.85);
   border-top: 3px dashed rgba(137, 199, 127, 0.5);
   color: #e8fbe4;
 }
 
-/* --------------------------------------------------------------------------
-   SUBTLE PAPER GLOW
-   -------------------------------------------------------------------------- */
-
+/* Paper glow */
 body::before {
   content: "";
   position: fixed;
