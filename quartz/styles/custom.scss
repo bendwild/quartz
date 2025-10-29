@@ -1,10 +1,10 @@
 @use "./base.scss";
 
 /* --------------------------------------------------------------------------
-   Handwritten Notebook Theme — Pastel Green Edition (build-safe)
+   ✏️ Benji’s Handwritten Notebook Theme — Pastel Green Edition 🌿
    -------------------------------------------------------------------------- */
 
-/* Load Kalam + Permanent Marker fonts via @font-face  */
+/* Load Kalam + Permanent Marker via @font-face (build-safe) */
 @font-face {
   font-family: "Kalam";
   src: url("https://fonts.gstatic.com/s/kalam/v17/YA9dr0Wd4kDdMtD6WnZB.woff2") format("woff2");
@@ -25,7 +25,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   BASE STYLES
+   BASE PAPER + TYPOGRAPHY
    -------------------------------------------------------------------------- */
 
 html, body {
@@ -37,7 +37,7 @@ html, body {
   line-height: 1.7;
   font-size: 1.05rem;
 
-  /* Subtle paper grid */
+  /* Grid paper */
   background-image:
     linear-gradient(to right, rgba(102, 153, 102, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(102, 153, 102, 0.08) 1px, transparent 1px);
@@ -53,7 +53,23 @@ body.dark {
   color: #e8fbe4;
 }
 
-/* Headings */
+/* Notebook margin line */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  width: 1.5px;
+  background: rgba(102, 153, 102, 0.25);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   HEADINGS
+   -------------------------------------------------------------------------- */
+
 h1, h2, h3, h4, h5 {
   font-family: "Permanent Marker", cursive;
   color: #274d32;
@@ -65,6 +81,7 @@ h1, h2, h3, h4, h5 {
 body.dark h1, body.dark h2, body.dark h3 {
   color: #b8e8b2;
 }
+
 h1::after {
   content: "";
   display: block;
@@ -78,18 +95,35 @@ h1::after {
   margin-top: 6px;
 }
 
-/* Links */
+/* --------------------------------------------------------------------------
+   LINKS + INTERACTIVITY
+   -------------------------------------------------------------------------- */
+
 a {
   color: #3b7a4a;
   text-decoration: underline wavy 1.5px #3b7a4a;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition: color 0.25s ease, text-decoration-color 0.25s ease, transform 0.2s ease;
 }
 a:hover {
   color: #89c77f;
   text-decoration-color: #89c77f;
+  transform: rotate(-1deg) scale(1.02);
+  filter: drop-shadow(0 0 4px rgba(137,199,127,0.3)); /* ink smudge hover */
 }
 
-/* Cards */
+/* Page fade animation */
+main {
+  animation: pageFade 0.6s ease;
+}
+@keyframes pageFade {
+  from { transform: rotateY(3deg); opacity: 0; }
+  to { transform: rotateY(0); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   NOTEBOOK CARDS
+   -------------------------------------------------------------------------- */
+
 .card {
   background: #fdfef9;
   border: 2px solid #3b7a4a;
@@ -103,7 +137,10 @@ a:hover {
   box-shadow: 6px 6px 0 #7acb7a;
 }
 
-/* Tags */
+/* --------------------------------------------------------------------------
+   TAGS + NOTES
+   -------------------------------------------------------------------------- */
+
 .tag {
   display: inline-block;
   padding: 0.25rem 0.6rem;
@@ -119,7 +156,31 @@ body.dark .tag {
   color: #b8e8b2;
 }
 
-/* Navbar */
+/* Sticky Note blocks */
+.note {
+  background: #fffde1;
+  border: 1.5px solid #d4c964;
+  box-shadow: 3px 3px 0 #e5dc7f;
+  padding: 1rem;
+  margin: 1rem 0;
+  transform: rotate(-1deg);
+  font-family: "Kalam", cursive;
+  max-width: 80%;
+  transition: transform 0.2s ease;
+}
+.note:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+.note::before {
+  content: "📎 ";
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+/* --------------------------------------------------------------------------
+   NAVBAR + FOOTER
+   -------------------------------------------------------------------------- */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -170,6 +231,17 @@ body.dark .footer {
   color: #e8fbe4;
 }
 
+/* --------------------------------------------------------------------------
+   DECORATIVE ELEMENTS
+   -------------------------------------------------------------------------- */
+
+/* Hand-drawn divider */
+hr {
+  border: 0;
+  border-top: 2px dashed rgba(59, 122, 74, 0.4);
+  margin: 2rem 0;
+}
+
 /* Paper glow */
 body::before {
   content: "";
@@ -180,4 +252,9 @@ body::before {
     radial-gradient(800px 400px at 10% 20%, rgba(137, 199, 127, 0.15), transparent 70%),
     radial-gradient(600px 300px at 90% 80%, rgba(179, 226, 182, 0.12), transparent 70%);
   z-index: -1;
+}
+
+/* Fun pencil cursor */
+body {
+  cursor: url("/static/pencil-cursor.png"), auto;
 }
