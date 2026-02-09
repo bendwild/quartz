@@ -260,15 +260,27 @@ body {
 }
 
 .photo-album {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  display: flex;
   gap: 0.75rem;
+  align-items: stretch;
+  overflow-x: auto;
+  padding: 0.25rem 0;
 }
 
 .photo-album img {
-  width: 100%;
-  height: auto;
+  height: 180px;          /* album row height */
+  width: auto;            /* preserve aspect ratio */
+  flex-shrink: 0;
   border-radius: 12px;
   object-fit: cover;
+}
+
+.photo-album img {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.photo-album img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
