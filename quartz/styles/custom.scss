@@ -284,3 +284,41 @@ body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
+.love-page {
+  background: linear-gradient(180deg, #fff6f3, #ffe8e1);
+}
+
+.love-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem;
+}
+
+.love-wrapper h1 {
+  font-size: 3rem;
+  color: #e76f51;
+  margin-bottom: 1.5rem;
+}
+
+.love-text {
+  font-size: 1.25rem;
+  max-width: 520px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.hearts {
+  font-size: 2rem;
+  margin-top: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
