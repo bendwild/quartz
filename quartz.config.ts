@@ -10,7 +10,7 @@ const config: QuartzConfig = {
   configuration: {
   pageTitle: "hi cutie 💗",
   pageTitleSuffix: "",
-    enableSPA: true,
+    enableSPA: false,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
